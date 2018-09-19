@@ -11,11 +11,9 @@ public class Player : MonoBehaviour
 
 	public void OnItemPickedUp(Item item)
 	{
-		item.gameObject.SetActive(false);
-
-		if (!m_inventory.AddItem(item))
+		if (m_inventory.AddItem(item))
 		{
-			EventManager.TriggerEvent(ItemEventType.Dropped, item);
+			item.gameObject.SetActive(false);
 		}
 	}
 

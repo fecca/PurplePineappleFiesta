@@ -17,18 +17,6 @@ public class Inventory
 		return true;
 	}
 
-	public bool GetItem(Item item)
-	{
-		if (!m_items.Contains(item))
-		{
-			return false;
-		}
-
-		m_items.Remove(item);
-
-		return true;
-	}
-
 	public Item Pop()
 	{
 		if (m_items != null && m_items.Count > 0)
