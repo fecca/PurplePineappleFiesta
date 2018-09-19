@@ -6,6 +6,7 @@ public class EventManager : MonoBehaviour
 	private void Awake()
 	{
 		SetupGenericEvents();
+		SetupStringEvents();
 		SetupItemEvents();
 	}
 
@@ -22,6 +23,28 @@ public class EventManager : MonoBehaviour
 		if (m_genericEvents.ContainsKey(type))
 		{
 			m_genericEvents[type].Raise();
+		}
+	}
+
+	#endregion
+
+	#region STRING EVENTS
+
+	[SerializeField]
+	private StringEvent ScreenMessageEvent;
+
+	private static Dictionary<StringEventType, StringEvent> m_stringEvents = new Dictionary<StringEventType, StringEvent>();
+
+	private void SetupStringEvents()
+	{
+		m_stringEvents.Add(StringEventType.Message, ScreenMessageEvent);
+	}
+
+	public static void TriggerEvent(StringEventType type, string message)
+	{
+		if (m_stringEvents.ContainsKey(type))
+		{
+			m_stringEvents[type].Raise(message);
 		}
 	}
 

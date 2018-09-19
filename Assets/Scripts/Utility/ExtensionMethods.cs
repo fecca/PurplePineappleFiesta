@@ -14,6 +14,13 @@ public static class ExtensionMethods
 		return comp;
 	}
 
+	public static Color WithAlpha(this Color color, float alpha)
+	{
+		var newColor = color;
+		newColor.a = alpha;
+		return newColor;
+	}
+
 	public static Vector3 WithX(this Vector3 v, float x)
 	{
 		return new Vector3(x, v.y, v.z);

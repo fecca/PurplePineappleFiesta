@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
 		{
 			item.PickUp();
 		}
+		else
+		{
+			EventManager.TriggerEvent(StringEventType.Message, "NO");
+		}
 	}
 
 	public void OnItemDropped(Item item)

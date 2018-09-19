@@ -1,5 +1,4 @@
-﻿public enum ItemEventType
+﻿public enum StringEventType
 {
-	PickedUp,
-	Dropped,
+	Message
 }
