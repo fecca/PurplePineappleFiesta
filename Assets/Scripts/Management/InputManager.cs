@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
@@ -6,15 +7,30 @@ public class InputManager : MonoBehaviour
 	{
 		if (Input.GetMouseButtonUp(0))
 		{
-			RaycastHit hit;
-			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out hit, 100f))
+			ClickItem(item =>
 			{
-				var item = hit.collider.GetComponent<Item>();
-				if (item != null)
-				{
-					item.OnClick();
-				}
+				EventManager.TriggerEvent(ItemEventType.PickedUp, item);
+			});
+		}
+		else if (Input.GetMouseButtonUp(1))
+		{
+			ClickItem(item =>
+			{
+				EventManager.TriggerEvent(ItemEventType.Dropped, item);
+			});
+		}
+	}
+
+	private void ClickItem(Action<Item> action)
+	{
+		RaycastHit hit;
+		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if (Physics.Raycast(ray, out hit, 100f))
+		{
+			var item = hit.collider.GetComponent<Item>();
+			if (item != null)
+			{
+				action(item);
 			}
 		}
 	}
