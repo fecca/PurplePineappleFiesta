@@ -11,19 +11,18 @@ public class EventManager : MonoBehaviour
 
 	#region GENERIC EVENTS
 
-	[SerializeField]
-	private GenericEvent TestEvent;
-
 	private static Dictionary<GenericEventType, GenericEvent> m_genericEvents = new Dictionary<GenericEventType, GenericEvent>();
 
 	private void SetupGenericEvents()
 	{
-		m_genericEvents.Add(GenericEventType.Test, TestEvent);
 	}
 
 	public static void TriggerEvent(GenericEventType type)
 	{
-		m_genericEvents[type].Raise();
+		if (m_genericEvents.ContainsKey(type))
+		{
+			m_genericEvents[type].Raise();
+		}
 	}
 
 	#endregion
@@ -32,17 +31,23 @@ public class EventManager : MonoBehaviour
 
 	[SerializeField]
 	private ItemEvent PickedUpEvent;
+	[SerializeField]
+	private ItemEvent DroppedItemEvent;
 
 	private static Dictionary<ItemEventType, ItemEvent> m_itemEvents = new Dictionary<ItemEventType, ItemEvent>();
 
 	private void SetupItemEvents()
 	{
 		m_itemEvents.Add(ItemEventType.PickedUp, PickedUpEvent);
+		m_itemEvents.Add(ItemEventType.Dropped, DroppedItemEvent);
 	}
 
 	public static void TriggerEvent(ItemEventType type, Item item)
 	{
-		m_itemEvents[type].Raise(item);
+		if (m_itemEvents.ContainsKey(type))
+		{
+			m_itemEvents[type].Raise(item);
+		}
 	}
 
 	#endregion
