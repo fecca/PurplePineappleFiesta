@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
@@ -7,30 +6,34 @@ public class InputManager : MonoBehaviour
 	{
 		if (Input.GetMouseButtonUp(0))
 		{
-			ClickItem(item =>
+			RaycastHit hit;
+			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit, 100f))
 			{
-				EventManager.TriggerEvent(ItemEventType.PickedUp, item);
-			});
+				var item = hit.collider.GetComponent<Item>();
+				if (item != null)
+				{
+					EventManager.TriggerEvent(ItemEventType.PickedUp, item);
+					return;
+				}
+
+				if (hit.collider.tag.Equals("Ground"))
+				{
+					EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
+				}
+			}
 		}
 		else if (Input.GetMouseButtonUp(1))
 		{
-			ClickItem(item =>
+			RaycastHit hit;
+			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit, 100f))
 			{
-				EventManager.TriggerEvent(ItemEventType.Dropped, item);
-			});
-		}
-	}
-
-	private void ClickItem(Action<Item> action)
-	{
-		RaycastHit hit;
-		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Physics.Raycast(ray, out hit, 100f))
-		{
-			var item = hit.collider.GetComponent<Item>();
-			if (item != null)
-			{
-				action(item);
+				var item = hit.collider.GetComponent<Item>();
+				if (item != null)
+				{
+					EventManager.TriggerEvent(ItemEventType.Dropped, item);
+				}
 			}
 		}
 	}

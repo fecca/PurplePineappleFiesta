@@ -8,6 +8,7 @@ public class EventManager : MonoBehaviour
 		SetupGenericEvents();
 		SetupStringEvents();
 		SetupItemEvents();
+		SetupWorldEvents();
 	}
 
 	#region GENERIC EVENTS
@@ -70,6 +71,28 @@ public class EventManager : MonoBehaviour
 		if (m_itemEvents.ContainsKey(type))
 		{
 			m_itemEvents[type].Raise(item);
+		}
+	}
+
+	#endregion
+
+	#region WORLD EVENTS
+
+	[SerializeField]
+	private WorldEvent ClickedGroundEvent;
+
+	private static Dictionary<WorldEventType, WorldEvent> m_worldEvents = new Dictionary<WorldEventType, WorldEvent>();
+
+	private void SetupWorldEvents()
+	{
+		m_worldEvents.Add(WorldEventType.ClickedGround, ClickedGroundEvent);
+	}
+
+	public static void TriggerEvent(WorldEventType type, Vector3 vector3)
+	{
+		if (m_worldEvents.ContainsKey(type))
+		{
+			m_worldEvents[type].Raise(vector3);
 		}
 	}
 
