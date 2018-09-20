@@ -36,6 +36,11 @@ public static class ExtensionMethods
 		return new Vector3(v.x, v.y, z);
 	}
 
+	public static bool CloserThan(this Vector3 v, Vector3 other, float distance)
+	{
+		return (other - v).sqrMagnitude < (distance * distance);
+	}
+
 	public static bool IsEmpty<T>(this ICollection<T> collection)
 	{
 		return collection.Count <= 0;

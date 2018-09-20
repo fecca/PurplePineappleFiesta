@@ -54,16 +54,16 @@ public class EventManager : MonoBehaviour
 	#region ITEM EVENTS
 
 	[SerializeField]
-	private ItemEvent PickedUpEvent;
+	private ItemEvent ClickedEvent;
 	[SerializeField]
-	private ItemEvent DroppedItemEvent;
+	private ItemEvent PickedUpEvent;
 
 	private static Dictionary<ItemEventType, ItemEvent> m_itemEvents = new Dictionary<ItemEventType, ItemEvent>();
 
 	private void SetupItemEvents()
 	{
+		m_itemEvents.Add(ItemEventType.Clicked, ClickedEvent);
 		m_itemEvents.Add(ItemEventType.PickedUp, PickedUpEvent);
-		m_itemEvents.Add(ItemEventType.Dropped, DroppedItemEvent);
 	}
 
 	public static void TriggerEvent(ItemEventType type, Item item)
