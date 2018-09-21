@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Blunderbuss
   m_EditorClassIdentifier: 
   Bullets: 6
-  SpreadRadius: 1.5
+  SpreadRadius: 3
   Distance: 10
-  Cooldown: 0.2
+  Cooldown: 1
   FollowSpeed: 10
   Frames: 15
   LineRenderer: {fileID: 120684687172499024, guid: d1eb6e9c0cb6ec949b60a32e09a69e08,
