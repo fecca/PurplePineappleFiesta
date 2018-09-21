@@ -15,7 +15,7 @@ public class CanvasManager : MonoBehaviour
 
 	private void Update()
 	{
-		m_inventoryText.text = $"{m_items.Items.Count}/{m_items.Slots}";
+		m_inventoryText.text = string.Format("{0}/{1}", m_items.Items.Count, m_items.Slots);
 	}
 
 	public void OnScreenMessage(string message)
