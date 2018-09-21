@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
 	[SerializeField]
 	private ItemRuntimeSet Items;
+	[SerializeField]
+	private Weapon m_weapon;
 
 	private NavMeshAgent m_agent;
 	private bool m_moving;
@@ -26,7 +28,6 @@ public class Player : MonoBehaviour
 				{
 					if (!m_agent.hasPath || m_agent.velocity.sqrMagnitude == 0f)
 					{
-						Debug.Log("Reached destination");
 						m_moving = false;
 
 						if (m_itemTarget != null)
@@ -40,9 +41,20 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	private void PickUpItem(Item item)
+	{
+		if (Items.Add(item))
+		{
+			Destroy(item.gameObject);
+		}
+		else
+		{
+			EventManager.TriggerEvent(StringEventType.Message, "Can't pick up item");
+		}
+	}
+
 	private void MoveTo(Vector3 point)
 	{
-		Debug.Log("Starting movement");
 		m_agent.SetDestination(point);
 		m_moving = true;
 	}
@@ -55,19 +67,17 @@ public class Player : MonoBehaviour
 
 	public void OnItemPickedUp(Item item)
 	{
-		if (Items.Add(item))
-		{
-			Destroy(item.gameObject);
-		}
-		else
-		{
-			EventManager.TriggerEvent(StringEventType.Message, "Can't pick up item");
-		}
+		PickUpItem(item);
 	}
 
 	public void OnGroundClicked(Vector3 point)
 	{
 		m_itemTarget = null;
 		MoveTo(point);
+	}
+
+	public void OnShoot()
+	{
+		m_weapon.Shoot();
 	}
 }

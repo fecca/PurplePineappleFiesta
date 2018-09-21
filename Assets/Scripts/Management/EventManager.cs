@@ -13,10 +13,15 @@ public class EventManager : MonoBehaviour
 
 	#region GENERIC EVENTS
 
+	[Header("Generic")]
+	[SerializeField]
+	private GenericEvent ShootEvent;
+
 	private static Dictionary<GenericEventType, GenericEvent> m_genericEvents = new Dictionary<GenericEventType, GenericEvent>();
 
 	private void SetupGenericEvents()
 	{
+		m_genericEvents.Add(GenericEventType.Shoot, ShootEvent);
 	}
 
 	public static void TriggerEvent(GenericEventType type)
@@ -31,6 +36,7 @@ public class EventManager : MonoBehaviour
 
 	#region STRING EVENTS
 
+	[Header("String")]
 	[SerializeField]
 	private StringEvent ScreenMessageEvent;
 
@@ -53,6 +59,7 @@ public class EventManager : MonoBehaviour
 
 	#region ITEM EVENTS
 
+	[Header("Item")]
 	[SerializeField]
 	private ItemEvent ClickedEvent;
 	[SerializeField]
@@ -78,6 +85,7 @@ public class EventManager : MonoBehaviour
 
 	#region WORLD EVENTS
 
+	[Header("World")]
 	[SerializeField]
 	private WorldEvent ClickedGroundEvent;
 
