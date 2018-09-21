@@ -64,6 +64,7 @@ public class InputManager : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
+			Debug.Log("Trigger Shoot");
 			EventManager.TriggerEvent(GenericEventType.Shoot);
 		}
 	}

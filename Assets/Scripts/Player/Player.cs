@@ -1,22 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
 public class Player : MonoBehaviour
 {
 	[SerializeField]
 	private ItemRuntimeSet Items;
 	[SerializeField]
 	private Weapon m_weapon;
-
+	[SerializeField]
 	private NavMeshAgent m_agent;
+
 	private bool m_moving;
 	private Item m_itemTarget;
-
-	private void Awake()
-	{
-		m_agent = GetComponent<NavMeshAgent>();
-	}
 
 	private void Update()
 	{
