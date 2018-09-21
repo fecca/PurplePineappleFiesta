@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class Player : MonoBehaviour
@@ -6,12 +7,26 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private ItemRuntimeSet Items;
 	[SerializeField]
-	private Weapon m_weapon;
+	private Weapon m_weaponPrefab;
 	[SerializeField]
 	private NavMeshAgent m_agent;
+	[SerializeField]
+	private Transform[] m_weaponSlots;
 
 	private bool m_moving;
 	private Item m_itemTarget;
+	private List<Weapon> m_weapons;
+
+	private void Awake()
+	{
+		m_weapons = new List<Weapon>(m_weaponSlots.Length);
+		for (var i = 0; i < m_weaponSlots.Length; i++)
+		{
+			var weapon = Instantiate(m_weaponPrefab);
+			weapon.SetParent(m_weaponSlots[i]);
+			m_weapons.Add(weapon);
+		}
+	}
 
 	private void Update()
 	{
@@ -73,6 +88,9 @@ public class Player : MonoBehaviour
 
 	public void OnShoot()
 	{
-		m_weapon.Shoot();
+		foreach (var weapon in m_weapons)
+		{
+			weapon.Shoot();
+		}
 	}
 }

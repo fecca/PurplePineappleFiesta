@@ -11,14 +11,20 @@ public class Weapon : MonoBehaviour
 	[SerializeField]
 	private GameObject m_lineRenderer;
 	[SerializeField]
-	private GameObject m_parent;
-	[SerializeField]
 	private float m_lerpSpeed;
+
+	private bool m_isInitialized;
+	private Transform m_parent;
 
 	private void Update()
 	{
-		transform.position = Vector3.Lerp(transform.position, m_parent.transform.position, Time.deltaTime * m_lerpSpeed);
-		transform.rotation = Quaternion.Lerp(transform.rotation, m_parent.transform.rotation, Time.deltaTime * m_lerpSpeed);
+		if (!m_isInitialized)
+		{
+			return;
+		}
+
+		transform.position = Vector3.Lerp(transform.position, m_parent.position, Time.deltaTime * m_lerpSpeed);
+		transform.rotation = Quaternion.Lerp(transform.rotation, m_parent.rotation, Time.deltaTime * m_lerpSpeed);
 	}
 
 	public void Shoot()
@@ -31,5 +37,11 @@ public class Weapon : MonoBehaviour
 			lr.SetPositions(new Vector3[] { m_barrel.position, m_barrel.position + direction * 10.0f });
 			Destroy(lrgo, 0.1f);
 		}
+	}
+
+	public void SetParent(Transform parent)
+	{
+		m_parent = parent;
+		m_isInitialized = true;
 	}
 }
