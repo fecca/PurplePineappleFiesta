@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
 
 	private void MoveTo(Vector3 point)
 	{
+		m_agent.isStopped = false;
 		m_agent.SetDestination(point);
 		m_moving = true;
 	}
@@ -86,11 +87,19 @@ public class Player : MonoBehaviour
 		MoveTo(point);
 	}
 
-	public void OnShoot()
+	public void OnShoot(Vector3 direction)
 	{
+		m_agent.isStopped = true;
+		m_agent.enabled = false;
+
+		var target = direction.WithY(m_agent.transform.position.y);
+		m_agent.transform.LookAt(target);
+
 		foreach (var weapon in m_weapons)
 		{
 			weapon.Shoot();
 		}
+
+		m_agent.enabled = true;
 	}
 }

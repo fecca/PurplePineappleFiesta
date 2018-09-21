@@ -62,10 +62,14 @@ public class InputManager : MonoBehaviour
 			m_timer = 0f;
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetMouseButtonUp(1))
 		{
-			Debug.Log("Trigger Shoot");
-			EventManager.TriggerEvent(GenericEventType.Shoot);
+			RaycastHit hit;
+			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if (Physics.Raycast(ray, out hit, 100f))
+			{
+				EventManager.TriggerEvent(WorldEventType.ShootInDirection, hit.point);
+			}
 		}
 	}
 }

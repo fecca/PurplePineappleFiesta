@@ -14,14 +14,11 @@ public class EventManager : MonoBehaviour
 	#region GENERIC EVENTS
 
 	[Header("Generic")]
-	[SerializeField]
-	private GenericEvent ShootEvent;
 
 	private static Dictionary<GenericEventType, GenericEvent> m_genericEvents = new Dictionary<GenericEventType, GenericEvent>();
 
 	private void SetupGenericEvents()
 	{
-		m_genericEvents.Add(GenericEventType.Shoot, ShootEvent);
 	}
 
 	public static void TriggerEvent(GenericEventType type)
@@ -88,12 +85,15 @@ public class EventManager : MonoBehaviour
 	[Header("World")]
 	[SerializeField]
 	private WorldEvent ClickedGroundEvent;
+	[SerializeField]
+	private WorldEvent ShootInDirection;
 
 	private static Dictionary<WorldEventType, WorldEvent> m_worldEvents = new Dictionary<WorldEventType, WorldEvent>();
 
 	private void SetupWorldEvents()
 	{
 		m_worldEvents.Add(WorldEventType.ClickedGround, ClickedGroundEvent);
+		m_worldEvents.Add(WorldEventType.ShootInDirection, ShootInDirection);
 	}
 
 	public static void TriggerEvent(WorldEventType type, Vector3 vector3)

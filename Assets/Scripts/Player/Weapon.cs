@@ -27,8 +27,16 @@ public class Weapon : MonoBehaviour
 		transform.rotation = Quaternion.Lerp(transform.rotation, m_parent.rotation, Time.deltaTime * m_lerpSpeed);
 	}
 
+	private void ForceWeaponPositionAndRotation()
+	{
+		transform.position = m_parent.position;
+		transform.rotation = m_parent.rotation;
+	}
+
 	public void Shoot()
 	{
+		ForceWeaponPositionAndRotation();
+
 		for (var i = 0; i < m_bullets; i++)
 		{
 			var direction = m_barrel.forward + (Vector3.right * (Random.value - 0.5f) * m_spread) + (Vector3.up * (Random.value - 0.5f) * m_spread);

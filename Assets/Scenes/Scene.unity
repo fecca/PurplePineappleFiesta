@@ -445,11 +445,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5d2c7d9f874124580c7a65af94ca1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootEvent: {fileID: 11400000, guid: d0b9a8a63358df6409f5051ae3a31097, type: 2}
   ScreenMessageEvent: {fileID: 11400000, guid: 8f8eed7cbcbf1b94cb86b991069586de, type: 2}
   ClickedEvent: {fileID: 11400000, guid: b89d11fbfb48d99419f3d39a1e7fa3b7, type: 2}
   PickedUpEvent: {fileID: 11400000, guid: 1f53fd9a32505c64e9dfde0d195baaf3, type: 2}
   ClickedGroundEvent: {fileID: 11400000, guid: 06b01e3ea323928499929b0fb2d86792, type: 2}
+  ShootInDirection: {fileID: 11400000, guid: 334c349fc9c68204ab077fc9e1c27478, type: 2}
 --- !u!4 &1800870387
 Transform:
   m_ObjectHideFlags: 0
