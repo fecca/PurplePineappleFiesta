@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private ItemRuntimeSet Items;
 	[SerializeField]
-	private Weapon m_weaponPrefab;
+	private Weapon[] m_weaponPrefabs;
 	[SerializeField]
 	private NavMeshAgent m_agent;
 	[SerializeField]
@@ -20,9 +20,9 @@ public class Player : MonoBehaviour
 	private void Awake()
 	{
 		m_weapons = new List<Weapon>(m_weaponSlots.Length);
-		for (var i = 0; i < m_weaponSlots.Length; i++)
+		for (var i = 0; i < m_weaponPrefabs.Length; i++)
 		{
-			var weapon = Instantiate(m_weaponPrefab);
+			var weapon = Instantiate(m_weaponPrefabs[i]);
 			weapon.SetParent(m_weaponSlots[i]);
 			m_weapons.Add(weapon);
 		}
