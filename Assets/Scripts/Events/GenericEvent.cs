@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Events/Generic", order = 0)]
 public class GenericEvent : ScriptableObject
 {
 	private List<GenericEventListener> Listeners = new List<GenericEventListener>();
