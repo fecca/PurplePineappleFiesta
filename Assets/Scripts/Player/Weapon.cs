@@ -29,14 +29,19 @@ public class Weapon : MonoBehaviour
 
 	private void ForceWeaponPositionAndRotation()
 	{
-		transform.position = m_parent.position;
-		transform.rotation = m_parent.rotation;
+		m_lerpSpeed *= 4f;
+		//transform.position = m_parent.position;
+		//transform.rotation = m_parent.rotation;
 	}
 
 	public void Shoot()
 	{
-		ForceWeaponPositionAndRotation();
+		m_lerpSpeed *= 4f;
+		Invoke("FinishedShooting", 0.1f);
+	}
 
+	private void FinishedShooting()
+	{
 		for (var i = 0; i < m_bullets; i++)
 		{
 			var direction = m_barrel.forward + (Vector3.right * (Random.value - 0.5f) * m_spread) + (Vector3.up * (Random.value - 0.5f) * m_spread);
@@ -45,6 +50,7 @@ public class Weapon : MonoBehaviour
 			lr.SetPositions(new Vector3[] { m_barrel.position, m_barrel.position + direction * 10.0f });
 			Destroy(lrgo, 0.1f);
 		}
+		m_lerpSpeed /= 4f;
 	}
 
 	public void SetParent(Transform parent)
