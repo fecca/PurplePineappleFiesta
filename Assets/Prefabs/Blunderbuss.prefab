@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4393989972692296}
   - component: {fileID: 114732798846518250}
   m_Layer: 0
-  m_Name: Shotgun
+  m_Name: Blunderbuss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1274186813686778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.566}
+  m_LocalPosition: {x: 0, y: 0, z: 0.772}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4393989972692296}
@@ -155,3 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_barrel: {fileID: 4340862736218230}
   m_stats: {fileID: 11400000, guid: b6f1fa3c1d4d37541831df4ea4cb14f3, type: 2}
+  m_hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295

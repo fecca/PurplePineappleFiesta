@@ -7,13 +7,18 @@ public class Weapon : MonoBehaviour
 	private Transform m_barrel;
 	[SerializeField]
 	private WeaponStats m_stats;
+	[SerializeField]
+	private LayerMask m_hitLayerMask;
 
 	private bool m_isInitialized;
 	private bool m_shooting;
 	private Transform m_parent;
+	private float m_cooldownTimer;
 
 	private void Update()
 	{
+		m_cooldownTimer += Time.deltaTime;
+
 		if (!m_isInitialized || m_shooting)
 		{
 			return;
@@ -25,28 +30,39 @@ public class Weapon : MonoBehaviour
 
 	public void Shoot()
 	{
-		StartCoroutine(StartShooting());
+		if (m_cooldownTimer >= m_stats.Cooldown)
+		{
+			m_cooldownTimer = 0f;
+			StartCoroutine(StartShooting());
+		}
 	}
 
 	private IEnumerator StartShooting()
 	{
 		m_shooting = true;
 
-		var frames = 10;
-		for (var i = 0; i < frames; i++)
+		for (var i = 0; i < m_stats.Frames; i++)
 		{
-			transform.position = Vector3.Lerp(transform.position, m_parent.position, (float)i / frames);
-			transform.rotation = Quaternion.Lerp(transform.rotation, m_parent.rotation, (float)i / frames);
+			transform.position = Vector3.Lerp(transform.position, m_parent.position, (float)i / m_stats.Frames);
+			transform.rotation = Quaternion.Lerp(transform.rotation, m_parent.rotation, (float)i / m_stats.Frames);
 
 			yield return new WaitForEndOfFrame();
 		}
 
 		for (var i = 0; i < m_stats.Bullets; i++)
 		{
-			var direction = m_barrel.forward + (Vector3.right * (Random.value - 0.5f) * m_stats.Spread) + (Vector3.up * (Random.value - 0.5f) * m_stats.Spread);
+			var direction = (m_barrel.forward * m_stats.Distance) + (Random.insideUnitSphere * m_stats.SpreadRadius);
+
+			RaycastHit hit;
+			Ray ray = new Ray(m_barrel.position, direction.normalized);
+			var hitPoint = ray.origin + ray.direction * m_stats.Distance;
+			if (Physics.Raycast(ray, out hit, m_stats.Distance, m_hitLayerMask))
+			{
+				hitPoint = hit.point;
+			}
 			var lineRenderer = Instantiate(m_stats.LineRenderer) as LineRenderer;
-			lineRenderer.SetPositions(new Vector3[] { m_barrel.position, m_barrel.position + direction * 10.0f });
-			Destroy(lineRenderer.gameObject, 0.1f);
+			lineRenderer.SetPositions(new Vector3[] { m_barrel.position, hitPoint });
+			Destroy(lineRenderer.gameObject, m_stats.LineRendererDuration);
 		}
 
 		m_shooting = false;
