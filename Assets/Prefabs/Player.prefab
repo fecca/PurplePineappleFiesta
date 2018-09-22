@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d352316b78e2744b1136c78f851f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: {fileID: 11400000, guid: 4772cbb6bfd552543b8316ef2ccb1b42, type: 2}
+  m_items: {fileID: 11400000, guid: 4772cbb6bfd552543b8316ef2ccb1b42, type: 2}
   m_weaponPrefabs:
   - {fileID: 114410073586875758, guid: dead65b71ae64f74bbe4a34751fba474, type: 3}
   - {fileID: 114732798846518250, guid: 6768bec82403c1b4abce5474075ef461, type: 3}
