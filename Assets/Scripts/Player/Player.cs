@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour
 {
 	[SerializeField]
-	private ItemRuntimeSet Items;
+	private ItemRuntimeSet m_items;
 	[SerializeField]
 	private Weapon[] m_weaponPrefabs;
 	[SerializeField]
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
 
 	private void PickUpItem(Item item)
 	{
-		if (Items.Add(item))
+		if (m_items.Add(item))
 		{
 			Destroy(item.gameObject);
 		}
