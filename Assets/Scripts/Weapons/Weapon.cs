@@ -59,6 +59,11 @@ public class Weapon : MonoBehaviour
 			if (Physics.Raycast(ray, out hit, m_stats.Distance, m_hitLayerMask))
 			{
 				hitPoint = hit.point;
+				var hitBox = hit.collider.GetComponent<HitBox>();
+				if (hitBox != null)
+				{
+					hitBox.OnHit(m_stats.Damage);
+				}
 			}
 			var lineRenderer = Instantiate(m_stats.LineRenderer) as LineRenderer;
 			lineRenderer.SetPositions(new Vector3[] { m_barrel.position, hitPoint });

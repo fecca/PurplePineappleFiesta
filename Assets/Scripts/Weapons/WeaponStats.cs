@@ -8,6 +8,7 @@ public class WeaponStats : ScriptableObject
 	public float SpreadRadius;
 	public float Distance;
 	public float Cooldown;
+	public float Damage;
 
 	[Header("Movement")]
 	public float FollowSpeed;

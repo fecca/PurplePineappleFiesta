@@ -16,6 +16,7 @@ MonoBehaviour:
   SpreadRadius: 3
   Distance: 10
   Cooldown: 1
+  Damage: 5
   FollowSpeed: 10
   Frames: 20
   LineRenderer: {fileID: 120684687172499024, guid: d1eb6e9c0cb6ec949b60a32e09a69e08, type: 3}

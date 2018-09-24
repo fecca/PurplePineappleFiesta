@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
@@ -7,58 +6,55 @@ public class Enemy : MonoBehaviour
 	[SerializeField]
 	private NavMeshAgent m_agent;
 	[SerializeField]
+	private GameObject m_mesh;
+	[SerializeField]
 	private float m_patrolRadius;
+	[SerializeField]
+	private float m_health;
 
-	private StateMachine<Enemy> m_stateMachine;
-	private bool m_moving;
+	private float m_idleTimer;
+	private float m_idleTime = 2.0f;
 
-	private void Awake()
-	{
-		m_stateMachine = new StateMachine<Enemy>();
-	}
-
-	private void Start()
-	{
-		m_stateMachine.Initialize(new EnemyTestState(this));
-	}
+	private EnemyState m_state = EnemyState.Idle;
 
 	private void Update()
 	{
-		m_stateMachine.Update();
-
-		if (m_moving)
+		switch (m_state)
 		{
-			if (!m_agent.pathPending)
-			{
-				if (m_agent.remainingDistance <= m_agent.stoppingDistance)
+			case EnemyState.Idle:
+				m_idleTimer += Time.deltaTime;
+				if (m_idleTimer >= m_idleTime)
 				{
-					if (!m_agent.hasPath || m_agent.velocity.sqrMagnitude == 0f)
+					m_idleTimer = 0f;
+					m_state = EnemyState.Moving;
+					MoveToRandomPositionOnNavMesh();
+				}
+				break;
+
+			case EnemyState.Moving:
+				if (!m_agent.pathPending)
+				{
+					if (m_agent.remainingDistance <= m_agent.stoppingDistance)
 					{
-						m_moving = false;
-						StartCoroutine(WaitOnSpot());
+						if (!m_agent.hasPath || m_agent.velocity.sqrMagnitude == 0f)
+						{
+							m_state = EnemyState.Idle;
+						}
 					}
 				}
-			}
-		}
+				break;
 
-		if (Input.GetKeyUp(KeyCode.Return))
-		{
-			m_stateMachine.ChangeState(new EnemyTestState(this));
-		}
+			case EnemyState.Dying:
+				Destroy(m_agent);
+				Destroy(m_mesh);
+				break;
 
-		if (Input.GetKeyUp(KeyCode.Escape))
-		{
-			m_stateMachine.ChangeState(new EnemyIdleState(this));
+			default:
+				break;
 		}
 	}
 
-	private IEnumerator WaitOnSpot()
-	{
-		yield return new WaitForSeconds(2.0f);
-		m_stateMachine.ChangeState(new EnemyTestState(this));
-	}
-
-	public void MoveToRandomPositionOnNavMesh()
+	private void MoveToRandomPositionOnNavMesh()
 	{
 		var randomDirection = Random.insideUnitSphere * m_patrolRadius;
 		randomDirection += transform.position;
@@ -70,8 +66,22 @@ public class Enemy : MonoBehaviour
 		}
 
 		m_agent.SetDestination(finalPosition);
-		m_moving = true;
+	}
 
-		m_stateMachine.ChangeState(new EnemyIdleState(this));
+	public void OnHit(float damage)
+	{
+		if (m_health <= 0)
+		{
+			Debug.Log("Already dead");
+			return;
+		}
+
+		m_health -= damage;
+		Debug.Log("Taking " + damage + " damage - " + m_health + " left");
+		if (m_health <= 0)
+		{
+			Debug.Log("Dying");
+			m_state = EnemyState.Dying;
+		}
 	}
 }
