@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Blunderbuss
   m_EditorClassIdentifier: 
   Bullets: 6
-  SpreadRadius: 3
+  SpreadRadius: 2
   Distance: 10
-  Cooldown: 1
+  Cooldown: 0.1
   Damage: 5
   FollowSpeed: 10
   Frames: 20
