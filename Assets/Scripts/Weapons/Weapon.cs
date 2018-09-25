@@ -49,23 +49,13 @@ public class Weapon : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 		}
 
-		var groundPoint = m_barrel.forward * m_stats.Distance;
-
-		RaycastHit hitInfo;
-		var rayy = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Physics.Raycast(rayy, out hitInfo, 100.0f))
-		{
-			groundPoint = hitInfo.point;
-		}
-
 		for (var i = 0; i < m_stats.Bullets; i++)
 		{
-			var target = groundPoint + (Random.insideUnitSphere * m_stats.SpreadRadius);
-			var direction = (target - m_barrel.position).normalized;
-			RaycastHit hit;
-			Ray ray = new Ray(m_barrel.position, direction);
-			var hitPoint = target;
+			var direction = (m_barrel.forward * m_stats.Distance) + (Random.insideUnitSphere * m_stats.SpreadRadius);
 
+			RaycastHit hit;
+			var ray = new Ray(m_barrel.position, direction.normalized);
+			var hitPoint = ray.origin + ray.direction * m_stats.Distance;
 			if (Physics.Raycast(ray, out hit, m_stats.Distance, m_hitLayerMask))
 			{
 				hitPoint = hit.point;
