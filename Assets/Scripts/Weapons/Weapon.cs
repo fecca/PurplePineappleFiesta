@@ -51,10 +51,10 @@ public class Weapon : MonoBehaviour
 
 		for (var i = 0; i < m_stats.Bullets; i++)
 		{
-			var direction = (m_barrel.forward * m_stats.Distance) + (Random.insideUnitSphere * m_stats.SpreadRadius);
+			var direction = (m_barrel.forward) + (Random.insideUnitSphere * m_stats.SpreadRadius);
 
 			RaycastHit hit;
-			var ray = new Ray(m_barrel.position, direction.normalized);
+			var ray = new Ray(m_barrel.position, direction * m_stats.Distance);
 			var hitPoint = ray.origin + ray.direction * m_stats.Distance;
 			if (Physics.Raycast(ray, out hit, m_stats.Distance, m_hitLayerMask))
 			{
