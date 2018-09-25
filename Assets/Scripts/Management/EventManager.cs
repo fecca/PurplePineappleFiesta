@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
 		SetupStringEvents();
 		SetupItemEvents();
 		SetupWorldEvents();
+		SetupEnemyEvents();
 	}
 
 	#region GENERIC EVENTS
@@ -101,6 +102,29 @@ public class EventManager : MonoBehaviour
 		if (m_worldEvents.ContainsKey(type))
 		{
 			m_worldEvents[type].Raise(vector3);
+		}
+	}
+
+	#endregion
+
+	#region WORLD EVENTS
+
+	[Header("World")]
+	[SerializeField]
+	private EnemyEvent EnemyDied;
+
+	private static Dictionary<EnemyEventType, EnemyEvent> m_enemyEvents = new Dictionary<EnemyEventType, EnemyEvent>();
+
+	private void SetupEnemyEvents()
+	{
+		m_enemyEvents.Add(EnemyEventType.Died, EnemyDied);
+	}
+
+	public static void TriggerEvent(EnemyEventType type, Enemy enemy)
+	{
+		if (m_enemyEvents.ContainsKey(type))
+		{
+			m_enemyEvents[type].Raise(enemy);
 		}
 	}
 

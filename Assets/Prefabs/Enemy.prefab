@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_agent: {fileID: 694618287096580592}
   m_mesh: {fileID: 380064334823559523}
+  m_lootTable: {fileID: 11400000, guid: 62f0cfa90dcc2d24fa0d5ef5f1040182, type: 2}
   m_patrolRadius: 5
   m_health: 100
 --- !u!195 &694618287096580592

@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 	[SerializeField]
 	private GameObject m_mesh;
 	[SerializeField]
+	private LootTable m_lootTable;
+	[SerializeField]
 	private float m_patrolRadius;
 	[SerializeField]
 	private float m_health;
@@ -47,6 +49,9 @@ public class Enemy : MonoBehaviour
 			case EnemyState.Dying:
 				Destroy(m_agent);
 				Destroy(m_mesh);
+				Destroy(gameObject);
+
+				EventManager.TriggerEvent(EnemyEventType.Died, this);
 				break;
 
 			default:
@@ -83,5 +88,10 @@ public class Enemy : MonoBehaviour
 			Debug.Log("Dying");
 			m_state = EnemyState.Dying;
 		}
+	}
+
+	public LootTable GetLootTable()
+	{
+		return m_lootTable;
 	}
 }
