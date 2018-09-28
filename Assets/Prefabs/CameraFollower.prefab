@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e466ad249f789e40a01c72e307b1680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_parent: {fileID: 0}
+  m_parent: {fileID: 4471178114245634, guid: 65234c325b3dc604eaa2ac4976146c5d, type: 3}
   m_followSpeed: 20
   m_rotate: 0
   m_rotationSpeed: 50

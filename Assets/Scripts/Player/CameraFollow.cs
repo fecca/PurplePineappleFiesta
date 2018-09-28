@@ -20,7 +20,7 @@ public class CameraFollow : MonoBehaviour
 
 		if (m_rotate)
 		{
-			if (Input.GetMouseButton(1))
+			if (Input.GetMouseButton(2))
 			{
 				var mouseX = Input.GetAxis("Mouse X");
 				transform.RotateAround(m_parent.position, Vector3.up, mouseX * Time.deltaTime * m_rotationSpeed);

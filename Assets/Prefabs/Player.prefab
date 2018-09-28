@@ -298,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_items: {fileID: 11400000, guid: 4772cbb6bfd552543b8316ef2ccb1b42, type: 2}
   m_weaponPrefabs:
-  - {fileID: 114410073586875758, guid: dead65b71ae64f74bbe4a34751fba474, type: 3}
+  - {fileID: 6318784413812422992, guid: bbed4af2cfa92264899448541cf555b6, type: 3}
   - {fileID: 114732798846518250, guid: 6768bec82403c1b4abce5474075ef461, type: 3}
   - {fileID: 114732798846518250, guid: 6768bec82403c1b4abce5474075ef461, type: 3}
   m_agent: {fileID: 2980704545190585601}
