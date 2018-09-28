@@ -16,7 +16,9 @@ public class ChaseAction : Action
 		}
 	}
 
-	public override void Exit(StateController controller) { }
+	public override void Exit(StateController controller)
+	{
+	}
 
 	private void Chase(StateController controller)
 	{

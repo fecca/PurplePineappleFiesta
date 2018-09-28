@@ -55,9 +55,4 @@ public class Enemy : MonoBehaviour
 	{
 		return m_playerDetection.Detection;
 	}
-
-	public void ChasePlayer()
-	{
-
-	}
 }

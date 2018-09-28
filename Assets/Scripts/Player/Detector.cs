@@ -39,7 +39,7 @@ public class Detector : MonoBehaviour
 	{
 		if (m_layerMask.Contains(other.gameObject.layer))
 		{
-			//Detection = null;
+			Detection = null;
 		}
 	}
 }

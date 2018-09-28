@@ -2,6 +2,9 @@
 
 public class InputManager : MonoBehaviour
 {
+	[SerializeField]
+	private LayerMask m_walkable;
+
 	private float m_updateInterval = 0.2f;
 	private float m_timer;
 
@@ -13,12 +16,9 @@ public class InputManager : MonoBehaviour
 
 			RaycastHit hit;
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out hit, 100f))
+			if (Physics.Raycast(ray, out hit, 100f, m_walkable))
 			{
-				if (hit.collider.tag.Equals("Ground"))
-				{
-					EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
-				}
+				EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
 			}
 		}
 
@@ -30,12 +30,9 @@ public class InputManager : MonoBehaviour
 
 				RaycastHit hit;
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-				if (Physics.Raycast(ray, out hit, 100f))
+				if (Physics.Raycast(ray, out hit, 100f, m_walkable))
 				{
-					if (hit.collider.tag.Equals("Ground"))
-					{
-						EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
-					}
+					EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
 				}
 			}
 
