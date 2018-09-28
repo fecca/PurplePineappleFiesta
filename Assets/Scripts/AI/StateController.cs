@@ -10,6 +10,7 @@ public class StateController : MonoBehaviour
 	public Enemy Owner { get { return m_enemy; } }
 
 	private State m_currentState;
+	private float m_timer;
 
 	private void Awake()
 	{
@@ -28,6 +29,22 @@ public class StateController : MonoBehaviour
 			return;
 		}
 
+		m_timer = 0f;
+		m_currentState.Exit(this);
 		m_currentState = newState;
+		m_currentState.Enter(this);
+	}
+
+	public bool CheckTimer(float time)
+	{
+		m_timer += Time.deltaTime;
+
+		if (m_timer >= time)
+		{
+			m_timer = 0f;
+			return true;
+		}
+
+		return false;
 	}
 }

@@ -11,15 +11,11 @@ public class Transition
 	[SerializeField]
 	private State m_falseState;
 
-	public State GetDecisionState(StateController controller)
+	public State TrueState { get { return m_trueState; } }
+	public State FalseState { get { return m_falseState; } }
+
+	public bool Decide(StateController controller)
 	{
-		if (m_decision.Decide(controller))
-		{
-			return m_trueState;
-		}
-		else
-		{
-			return m_falseState;
-		}
+		return m_decision.Decide(controller);
 	}
 }

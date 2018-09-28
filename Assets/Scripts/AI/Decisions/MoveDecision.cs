@@ -5,13 +5,9 @@ public class MoveDecision : Decision
 {
 	public override bool Decide(StateController controller)
 	{
-		var value = CanMove(controller);
+		var canMove = !controller.Owner.Agent.IsMoving();
+		var timerHasElapsed = controller.CheckTimer(2.0f);
 
-		return value;
-	}
-
-	private bool CanMove(StateController controller)
-	{
-		return !controller.Owner.Agent.IsMoving();
+		return canMove && timerHasElapsed;
 	}
 }
