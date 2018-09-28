@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ef15ed27bbb51438daaa197ceca0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_walkable:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!4 &239930811
 Transform:
   m_ObjectHideFlags: 0
@@ -510,7 +513,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4471178114245634, guid: 65234c325b3dc604eaa2ac4976146c5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4471178114245634, guid: 65234c325b3dc604eaa2ac4976146c5d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -518,7 +521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471178114245634, guid: 65234c325b3dc604eaa2ac4976146c5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.49
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4471178114245634, guid: 65234c325b3dc604eaa2ac4976146c5d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1179,10 +1182,6 @@ PrefabInstance:
     - target: {fileID: 380064334325218109, guid: 0328be95d3c48294bab3d2b76a7b54d8, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 57976032, guid: 0328be95d3c48294bab3d2b76a7b54d8, type: 3}
-      propertyPath: m_radius
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0328be95d3c48294bab3d2b76a7b54d8, type: 3}
