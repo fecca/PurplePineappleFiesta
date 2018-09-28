@@ -4,6 +4,8 @@ public class InputManager : MonoBehaviour
 {
 	[SerializeField]
 	private LayerMask m_walkable;
+	[SerializeField]
+	private LayerMask m_shootable;
 
 	private float m_updateInterval = 0.2f;
 	private float m_timer;
@@ -63,7 +65,7 @@ public class InputManager : MonoBehaviour
 		{
 			RaycastHit hit;
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out hit, 100f))
+			if (Physics.Raycast(ray, out hit, 100f, m_shootable))
 			{
 				EventManager.TriggerEvent(WorldEventType.ShootInDirection, hit.point);
 			}

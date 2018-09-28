@@ -65,9 +65,12 @@ public class Weapon : MonoBehaviour
 					hitBox.OnHit(m_stats.Damage);
 				}
 			}
+
 			var lineRenderer = Instantiate(m_stats.LineRenderer) as LineRenderer;
 			lineRenderer.SetPositions(new Vector3[] { m_barrel.position, hitPoint });
 			Destroy(lineRenderer.gameObject, m_stats.LineRendererDuration);
+
+			Debug.DrawRay(ray.origin, ray.direction * m_stats.Distance, Color.red, 5.0f);
 		}
 
 		m_shooting = false;
