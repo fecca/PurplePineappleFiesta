@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public static class ExtensionMethods
 {
@@ -48,5 +49,26 @@ public static class ExtensionMethods
 	public static bool IsNullOrEmpty<T>(this ICollection<T> collection)
 	{
 		return collection == null || collection.Count <= 0;
+	}
+
+	public static bool IsMoving(this NavMeshAgent agent)
+	{
+		if (!agent.pathPending)
+		{
+			if (agent.remainingDistance <= agent.stoppingDistance)
+			{
+				if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+				{
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+
+	public static bool Contains(this LayerMask mask, int layer)
+	{
+		return mask == (mask | (1 << layer));
 	}
 }

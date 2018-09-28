@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33496020643721882}
   - component: {fileID: 23286302442181008}
   - component: {fileID: 65504845031410218}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,8 +86,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155629591856772}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4454254395360828}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponPosition4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4683707104856708}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponPosition2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4540960524581414}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponPosition0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4289490447750824}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponPosition3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4082633579606254}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponPosition1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 114129446650468490}
   - component: {fileID: 114957877505535324}
   - component: {fileID: 114839241703601086}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
