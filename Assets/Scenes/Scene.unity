@@ -447,18 +447,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
-    - target: {fileID: 305082172, guid: 27aae4586ab27d641841480dfab56cd8, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967263
-      objectReference: {fileID: 0}
-    - target: {fileID: 305082172, guid: 27aae4586ab27d641841480dfab56cd8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 305082173, guid: 27aae4586ab27d641841480dfab56cd8, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27aae4586ab27d641841480dfab56cd8, type: 3}
 --- !u!1001 &961344069
@@ -1079,10 +1067,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1514407794, guid: 0328be95d3c48294bab3d2b76a7b54d8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0328be95d3c48294bab3d2b76a7b54d8, type: 3}
 --- !u!1001 &1697991764465605386
@@ -1140,18 +1124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
-    - target: {fileID: 1697991762580123000, guid: a0afa43d4ffcddc499297123221b2c35, type: 3}
-      propertyPath: m_fountainSpread
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1697991762580123000, guid: a0afa43d4ffcddc499297123221b2c35, type: 3}
-      propertyPath: m_fountainForce.Variable
-      value: 
-      objectReference: {fileID: 11400000, guid: 21aa18037749245488d4d79e50a5e163, type: 2}
-    - target: {fileID: 1697991762580123000, guid: a0afa43d4ffcddc499297123221b2c35, type: 3}
-      propertyPath: m_fountainSpread.Variable
-      value: 
-      objectReference: {fileID: 11400000, guid: dc69f7eddf126834188b945af7d20c2b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0afa43d4ffcddc499297123221b2c35, type: 3}
 --- !u!1001 &3822119607533587460
@@ -1213,14 +1185,6 @@ PrefabInstance:
       propertyPath: m_parent
       value: 
       objectReference: {fileID: 1683633458}
-    - target: {fileID: 3822119607104684875, guid: 2cd7088280c110247afcb2ca9dbd64da, type: 3}
-      propertyPath: m_followSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3822119607104684875, guid: 2cd7088280c110247afcb2ca9dbd64da, type: 3}
-      propertyPath: m_rotate
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd7088280c110247afcb2ca9dbd64da, type: 3}
 --- !u!1001 &7702509605190901748

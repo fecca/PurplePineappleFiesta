@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1697991762580123000}
   - component: {fileID: 1697991762580123003}
   m_Layer: 0
-  m_Name: ItemManager
+  m_Name: ItemFountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4358c1d2f0409064096e1c982373d23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_fountainSpread:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: dc69f7eddf126834188b945af7d20c2b, type: 2}
+  m_fountainForce:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 21aa18037749245488d4d79e50a5e163, type: 2}
 --- !u!114 &1697991762580123003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +213,10 @@ MonoBehaviour:
   m_shootable:
     serializedVersion: 2
     m_Bits: 1537
-  m_updateInterval: 0.2
+  m_updateInterval:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: eef5e29be19853641804f84fb35b08e7, type: 2}
   m_keyBindings: []
 --- !u!114 &1818133680203017477
 MonoBehaviour:

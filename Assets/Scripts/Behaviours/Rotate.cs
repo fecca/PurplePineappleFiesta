@@ -3,13 +3,13 @@
 public class Rotate : MonoBehaviour
 {
 	[SerializeField]
-	private float Speed = 0.5f;
+	private FloatReference Speed;
 
 	private float m_timer;
 
 	private void Update()
 	{
 		m_timer += Time.deltaTime;
-		transform.Rotate(Vector3.up, Time.deltaTime * Speed, Space.World);
+		transform.Rotate(Vector3.up, Time.deltaTime * Speed.Value, Space.World);
 	}
 }

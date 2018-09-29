@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
 	[SerializeField]
 	private LayerMask m_shootable;
 	[SerializeField]
-	private float m_updateInterval = 0.2f;
+	private FloatReference m_updateInterval;
 	[SerializeField]
 	private KeyBinding[] m_keyBindings;
 
@@ -67,7 +67,7 @@ public class InputManager : MonoBehaviour
 
 		if (Input.GetMouseButton(0))
 		{
-			if (m_mousePressTimer >= m_updateInterval)
+			if (m_mousePressTimer >= m_updateInterval.Value)
 			{
 				RaycastHit hit;
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);

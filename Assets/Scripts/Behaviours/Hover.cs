@@ -3,7 +3,7 @@
 public class Hover : MonoBehaviour
 {
 	[SerializeField]
-	private float Strength = 0.5f;
+	private FloatReference Strength;
 
 	private float m_originalY;
 	private float m_timer;
@@ -21,6 +21,6 @@ public class Hover : MonoBehaviour
 	private void Update()
 	{
 		m_timer += Time.deltaTime;
-		transform.position = new Vector3(transform.position.x, m_originalY + (Mathf.Sin(m_timer) * Strength), transform.position.z);
+		transform.position = new Vector3(transform.position.x, m_originalY + (Mathf.Sin(m_timer) * Strength.Value), transform.position.z);
 	}
 }
