@@ -153,4 +153,23 @@ public class EventManager : MonoBehaviour
 	}
 
 	#endregion
+
+	#region KEYBOARD EVENTS
+
+	private static Dictionary<KeyCode, GenericEvent> m_keyboardEvents = new Dictionary<KeyCode, GenericEvent>();
+
+	public static void RegisterKeyBinding(KeyBinding keyBinding)
+	{
+		m_keyboardEvents.Add(keyBinding.KeyCode, keyBinding.Event);
+	}
+
+	public static void TriggerEvent(KeyCode type)
+	{
+		if (m_keyboardEvents.ContainsKey(type))
+		{
+			m_keyboardEvents[type].Raise();
+		}
+	}
+
+	#endregion
 }

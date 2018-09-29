@@ -206,6 +206,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1537
   m_updateInterval: 0.2
+  m_keyBindings: []
 --- !u!114 &1818133680203017477
 MonoBehaviour:
   m_ObjectHideFlags: 0

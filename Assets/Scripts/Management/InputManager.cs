@@ -8,9 +8,19 @@ public class InputManager : MonoBehaviour
 	private LayerMask m_shootable;
 	[SerializeField]
 	private float m_updateInterval = 0.2f;
+	[SerializeField]
+	private KeyBinding[] m_keyBindings;
 
 	private float m_mousePressTimer;
 	private bool m_inputLocked;
+
+	private void Start()
+	{
+		foreach (var keyBinding in m_keyBindings)
+		{
+			EventManager.RegisterKeyBinding(keyBinding);
+		}
+	}
 
 	private void Update()
 	{
@@ -23,10 +33,15 @@ public class InputManager : MonoBehaviour
 		HandleMouseInput();
 	}
 
-	private bool m_dash;
 	private void HandleKeyboardInput()
 	{
-		m_dash = Input.GetKey(KeyCode.Space);
+		foreach (var keyBinding in m_keyBindings)
+		{
+			if (Input.GetKeyDown(keyBinding.KeyCode))
+			{
+				EventManager.TriggerEvent(keyBinding.KeyCode);
+			}
+		}
 	}
 
 	private void HandleMouseInput()
