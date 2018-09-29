@@ -94,9 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0c6d2eb093f01439661ab2503ffe48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_drawGizmos: 1
+  m_drawGizmos: 0
   m_gizmoColor: {r: 0, g: 0, b: 1, a: 1}
-  m_collider: {fileID: 57976033}
 --- !u!1 &380064334325218109
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +336,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0c6d2eb093f01439661ab2503ffe48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_drawGizmos: 1
+  m_drawGizmos: 0
   m_gizmoColor: {r: 1, g: 0, b: 0, a: 1}
-  m_collider: {fileID: 444117781652091877}

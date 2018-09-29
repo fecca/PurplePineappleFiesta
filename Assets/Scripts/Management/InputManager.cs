@@ -7,13 +7,18 @@ public class InputManager : MonoBehaviour
 	[SerializeField]
 	private LayerMask m_shootable;
 	[SerializeField]
+	private LayerMask m_clickable;
+	[SerializeField]
 	private FloatReference m_updateInterval;
 	[SerializeField]
-	private FloatReference m_tapWindow;
+	private FloatReference m_tapInterval;
+	[SerializeField]
+	private FloatReference m_moveUpdateInterval;
 	[SerializeField]
 	private KeyBinding[] m_keyBindings;
 
-	private float m_mousePressTimer;
+	private float m_moveTimer;
+	private float m_tapTimer;
 	private bool m_inputLocked;
 
 	private void Start()
@@ -64,12 +69,12 @@ public class InputManager : MonoBehaviour
 				EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
 			}
 
-			m_mousePressTimer = 0f;
+			m_tapTimer = 0f;
 		}
 
 		if (Input.GetMouseButton(0))
 		{
-			if (m_mousePressTimer >= m_updateInterval.Value)
+			if (m_moveTimer >= m_updateInterval.Value)
 			{
 				RaycastHit hit;
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -78,10 +83,11 @@ public class InputManager : MonoBehaviour
 					EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
 				}
 
-				m_mousePressTimer = 0f;
+				m_moveTimer = 0f;
 			}
 
-			m_mousePressTimer += Time.deltaTime;
+			m_moveTimer += Time.deltaTime;
+			m_tapTimer += Time.deltaTime;
 		}
 
 		if (Input.GetMouseButtonUp(0))
@@ -90,18 +96,17 @@ public class InputManager : MonoBehaviour
 			{
 				RaycastHit hit;
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-				if (Physics.Raycast(ray, out hit, 100f))
+				if (Physics.Raycast(ray, out hit, 100f, m_clickable))
 				{
-					var item = hit.collider.GetComponent<Item>();
-					if (item != null)
+					var clickBox = hit.collider.GetComponent<ClickBox>();
+					if (clickBox != null)
 					{
-						EventManager.TriggerEvent(ItemEventType.Clicked, item);
-						return;
+						clickBox.OnClick();
 					}
 				}
 			}
 
-			m_mousePressTimer = 0f;
+			m_tapTimer = 0f;
 		}
 	}
 
@@ -124,7 +129,7 @@ public class InputManager : MonoBehaviour
 
 	private bool IsTap()
 	{
-		return m_mousePressTimer <= m_tapWindow.Value;
+		return m_tapTimer <= m_tapInterval.Value;
 	}
 
 	public void OnMouseInputLocked(bool value)

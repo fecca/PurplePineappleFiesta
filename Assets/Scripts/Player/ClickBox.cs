@@ -20,7 +20,7 @@ public class ClickBox : MonoBehaviour
 		m_collider.radius = m_radius.Value;
 	}
 
-	public void OnHit(float damage)
+	public void OnClick()
 	{
 		IClickListener listener = m_listener.GetComponent<IClickListener>();
 		if (listener == null)

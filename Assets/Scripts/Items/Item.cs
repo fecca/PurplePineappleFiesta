@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IClickListener
 {
 	[SerializeField]
 	private ItemData Data;
@@ -10,19 +10,9 @@ public class Item : MonoBehaviour
 		Data = itemData;
 	}
 
-	public void PickUp()
+	public void OnClick()
 	{
-		GetComponent<Hover>().enabled = false;
-		GetComponent<Rotate>().enabled = false;
-
-		transform.localScale *= 0.5f;
-	}
-
-	public void Drop()
-	{
-		GetComponent<Hover>().enabled = true;
-		GetComponent<Rotate>().enabled = true;
-
-		transform.localScale *= 2.0f;
+		Debug.Log("Clicked item");
+		EventManager.TriggerEvent(ItemEventType.Clicked, this);
 	}
 }
