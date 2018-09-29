@@ -6,44 +6,63 @@ public class InputManager : MonoBehaviour
 	private LayerMask m_walkable;
 	[SerializeField]
 	private LayerMask m_shootable;
-
+	[SerializeField]
 	private float m_updateInterval = 0.2f;
-	private float m_timer;
+
+	private float m_mousePressTimer;
+	private bool m_inputLocked;
 
 	private void Update()
 	{
+		if (m_inputLocked)
+		{
+			return;
+		}
+
+		HandleMouseInput();
+	}
+
+	private void HandleMouseInput()
+	{
+		HandleLeftMouseButton();
+		HandleMiddleMouseButton();
+		HandleRightMouseButton();
+	}
+
+	private void HandleLeftMouseButton()
+	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			m_timer = 0f;
-
 			RaycastHit hit;
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(ray, out hit, 100f, m_walkable))
 			{
 				EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
 			}
+
+			m_mousePressTimer = 0f;
 		}
 
 		if (Input.GetMouseButton(0))
 		{
-			if (m_timer >= m_updateInterval)
+			if (m_mousePressTimer >= m_updateInterval)
 			{
-				m_timer = 0f;
-
 				RaycastHit hit;
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				if (Physics.Raycast(ray, out hit, 100f, m_walkable))
 				{
 					EventManager.TriggerEvent(WorldEventType.ClickedGround, hit.point);
 				}
+
+				m_mousePressTimer = 0f;
 			}
 
-			m_timer += Time.deltaTime;
+			m_mousePressTimer += Time.deltaTime;
 		}
 
 		if (Input.GetMouseButtonUp(0))
 		{
-			if (m_timer <= 0.1f)
+			if (m_mousePressTimer <= 0.1f)
 			{
 				RaycastHit hit;
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -58,9 +77,16 @@ public class InputManager : MonoBehaviour
 				}
 			}
 
-			m_timer = 0f;
+			m_mousePressTimer = 0f;
 		}
+	}
 
+	private void HandleMiddleMouseButton()
+	{
+	}
+
+	private void HandleRightMouseButton()
+	{
 		if (Input.GetMouseButtonUp(1))
 		{
 			RaycastHit hit;
@@ -70,5 +96,10 @@ public class InputManager : MonoBehaviour
 				EventManager.TriggerEvent(WorldEventType.ShootInDirection, hit.point);
 			}
 		}
+	}
+
+	public void OnMouseInputLocked(bool value)
+	{
+		m_inputLocked = value;
 	}
 }

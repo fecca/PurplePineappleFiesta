@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Events/World", order = 2)]
+[CreateAssetMenu(menuName = "Events/World")]
 public class WorldEvent : ScriptableObject
 {
 	private List<WorldEventListener> Listeners = new List<WorldEventListener>();

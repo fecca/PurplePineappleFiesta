@@ -7,6 +7,7 @@ public class EventManager : MonoBehaviour
 	{
 		SetupGenericEvents();
 		SetupStringEvents();
+		SetupBoolEvents();
 		SetupItemEvents();
 		SetupWorldEvents();
 		SetupEnemyEvents();
@@ -50,6 +51,29 @@ public class EventManager : MonoBehaviour
 		if (m_stringEvents.ContainsKey(type))
 		{
 			m_stringEvents[type].Raise(message);
+		}
+	}
+
+	#endregion
+
+	#region BOOL EVENTS
+
+	[Header("Bool")]
+	[SerializeField]
+	private BoolEvent MouseInputLocked;
+
+	private static Dictionary<BoolEventType, BoolEvent> m_boolEvents = new Dictionary<BoolEventType, BoolEvent>();
+
+	private void SetupBoolEvents()
+	{
+		m_boolEvents.Add(BoolEventType.LockMouseInput, MouseInputLocked);
+	}
+
+	public static void TriggerEvent(BoolEventType type, bool value)
+	{
+		if (m_boolEvents.ContainsKey(type))
+		{
+			m_boolEvents[type].Raise(value);
 		}
 	}
 
