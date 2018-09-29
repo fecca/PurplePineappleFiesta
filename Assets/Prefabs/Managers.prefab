@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScreenMessageEvent: {fileID: 11400000, guid: 8f8eed7cbcbf1b94cb86b991069586de, type: 2}
   MouseInputLocked: {fileID: 11400000, guid: 8c08d3b456a66cb46b522816e3660a9e, type: 2}
+  SpawnedEvent: {fileID: 11400000, guid: a78fbce24461e6d49bd41d24742174e3, type: 2}
   ClickedEvent: {fileID: 11400000, guid: b89d11fbfb48d99419f3d39a1e7fa3b7, type: 2}
   PickedUpEvent: {fileID: 11400000, guid: 1f53fd9a32505c64e9dfde0d195baaf3, type: 2}
   ClickedGroundEvent: {fileID: 11400000, guid: 06b01e3ea323928499929b0fb2d86792, type: 2}
@@ -213,14 +214,21 @@ MonoBehaviour:
   m_shootable:
     serializedVersion: 2
     m_Bits: 1537
+  m_clickable:
+    serializedVersion: 2
+    m_Bits: 16384
   m_updateInterval:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: eef5e29be19853641804f84fb35b08e7, type: 2}
-  m_tapWindow:
+  m_tapInterval:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 81857962a0893f143b2131fa3a21b0f4, type: 2}
+  m_moveUpdateInterval:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: eef5e29be19853641804f84fb35b08e7, type: 2}
   m_keyBindings: []
 --- !u!114 &1818133680203017477
 MonoBehaviour:

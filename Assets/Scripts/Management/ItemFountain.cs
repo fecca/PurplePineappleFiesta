@@ -14,6 +14,7 @@ public class ItemFountain : MonoBehaviour
 		{
 			var item = CreateItem(position, lootItem);
 			ExplodeItem(item.gameObject);
+			EventManager.TriggerEvent(ItemEventType.Spawned, item);
 		}
 	}
 

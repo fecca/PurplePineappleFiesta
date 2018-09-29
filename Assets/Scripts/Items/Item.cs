@@ -8,6 +8,7 @@ public class Item : MonoBehaviour, IClickListener
 	public void Init(ItemData itemData)
 	{
 		Data = itemData;
+		gameObject.name = Data.Name;
 	}
 
 	public void OnClick()

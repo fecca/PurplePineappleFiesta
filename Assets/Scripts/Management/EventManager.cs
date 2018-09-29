@@ -83,6 +83,8 @@ public class EventManager : MonoBehaviour
 
 	[Header("Item")]
 	[SerializeField]
+	private ItemEvent SpawnedEvent;
+	[SerializeField]
 	private ItemEvent ClickedEvent;
 	[SerializeField]
 	private ItemEvent PickedUpEvent;
@@ -91,6 +93,7 @@ public class EventManager : MonoBehaviour
 
 	private void SetupItemEvents()
 	{
+		m_itemEvents.Add(ItemEventType.Spawned, SpawnedEvent);
 		m_itemEvents.Add(ItemEventType.Clicked, ClickedEvent);
 		m_itemEvents.Add(ItemEventType.PickedUp, PickedUpEvent);
 	}

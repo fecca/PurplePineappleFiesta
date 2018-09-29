@@ -2,4 +2,5 @@
 {
 	Clicked,
 	PickedUp,
+	Spawned,
 }
