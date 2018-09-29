@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 57976034}
   - component: {fileID: 1660527234948043672}
   m_Layer: 12
-  m_Name: Detection
+  m_Name: DetectionBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &57976032
 MonoBehaviour:
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 1756195469295442447}
   - component: {fileID: 2955816277071494047}
   m_Layer: 10
-  m_Name: HitBox
+  m_Name: HitArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(SphereCollider))]
 public class HitBox : MonoBehaviour
 {

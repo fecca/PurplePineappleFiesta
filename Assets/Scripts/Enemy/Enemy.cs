@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IHitListener
 	[SerializeField]
 	private GameObject m_mesh;
 	[SerializeField]
-	private Detector m_playerDetection;
+	private DetectionBox m_playerDetection;
 
 	private float m_currentHealth;
 
@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour, IHitListener
 
 	public GameObject DetectedObject()
 	{
-		return m_playerDetection.Detection;
+		return m_playerDetection.DetectedObject;
 	}
 
 	public void SetChaseSpeed()

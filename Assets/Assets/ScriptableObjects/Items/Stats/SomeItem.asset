@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SomeItem
   m_EditorClassIdentifier: 
   Name: SomeItem
-  Prefab: {fileID: 3439619442019257382, guid: 181e3195b7f07ea419df5f3827f1cdda, type: 3}
+  Prefab: {fileID: 3673353358034787474, guid: 181e3195b7f07ea419df5f3827f1cdda, type: 3}

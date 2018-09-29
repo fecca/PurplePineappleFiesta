@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class Detector : MonoBehaviour
+public class DetectionBox : MonoBehaviour
 {
 	[SerializeField]
 	private LayerMask m_layerMask;
 	[SerializeField]
 	private FloatReference m_radius;
 
-	public GameObject Detection { get; private set; }
+	public GameObject DetectedObject { get; private set; }
 
 	private SphereCollider m_collider;
 
@@ -26,7 +26,7 @@ public class Detector : MonoBehaviour
 	{
 		if (m_layerMask.Contains(other.gameObject.layer))
 		{
-			Detection = other.gameObject;
+			DetectedObject = other.gameObject;
 		}
 	}
 
@@ -34,7 +34,7 @@ public class Detector : MonoBehaviour
 	{
 		if (m_layerMask.Contains(other.gameObject.layer))
 		{
-			Detection = null;
+			DetectedObject = null;
 		}
 	}
 }
