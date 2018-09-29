@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MegaBlunderbuss
   m_EditorClassIdentifier: 
   Bullets: 10
-  SpreadRadius: 0.25
+  SpreadRadius: 0.1
   Distance: 15
   Cooldown: 0.5
-  Damage: 200
+  Damage: 10
   FollowSpeed: 20
   Frames: 10
   LineRenderer: {fileID: 120684687172499024, guid: d1eb6e9c0cb6ec949b60a32e09a69e08, type: 3}

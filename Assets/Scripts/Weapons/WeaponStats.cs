@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Weapons/Stats", order = 0)]
+[CreateAssetMenu(menuName = "Weapons/Stats")]
 public class WeaponStats : ScriptableObject
 {
 	[Header("Shooting")]

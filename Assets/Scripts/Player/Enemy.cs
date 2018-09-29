@@ -1,58 +1,65 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHitListener
 {
+	[SerializeField]
+	private EnemyStats m_stats;
 	[SerializeField]
 	private NavMeshAgent m_agent;
 	[SerializeField]
 	private GameObject m_mesh;
 	[SerializeField]
-	private LootTable m_lootTable;
-	[SerializeField]
-	private float m_patrolRadius;
-	[SerializeField]
-	private float m_health;
-	[SerializeField]
 	private Detector m_playerDetection;
 
+	private float m_currentHealth;
+
 	public NavMeshAgent Agent { get { return m_agent; } }
+	public float PatrolRadius { get { return m_stats.PatrolRadius; } }
+	public LootTable LootTable { get { return m_stats.LootTable; } }
 
-	private bool m_hasDetectedPlayer;
-
-	private void OnTriggerEnter(Collider other)
+	private float Health
 	{
-		m_hasDetectedPlayer = true;
+		get { return m_currentHealth; }
+		set
+		{
+			var oldHealth = m_currentHealth;
+			m_currentHealth = value;
+			if (oldHealth > 0 && m_currentHealth <= 0)
+			{
+				Die();
+			}
+		}
 	}
 
-	private void OnTriggerExit(Collider other)
+	private void Awake()
 	{
-		m_hasDetectedPlayer = true;
+		m_currentHealth = m_stats.BaseHealth;
+	}
+
+	private void Die()
+	{
+		Destroy(gameObject);
+		EventManager.TriggerEvent(EnemyEventType.Died, this);
 	}
 
 	public void OnHit(float damage)
 	{
-		if (m_health <= 0)
-		{
-			return;
-		}
-
-		m_health -= damage;
-		if (m_health <= 0)
-		{
-			Destroy(gameObject);
-
-			EventManager.TriggerEvent(EnemyEventType.Died, this);
-		}
-	}
-
-	public LootTable GetLootTable()
-	{
-		return m_lootTable;
+		Health -= damage;
 	}
 
 	public GameObject Detection()
 	{
 		return m_playerDetection.Detection;
+	}
+
+	public void SetChaseSpeed()
+	{
+		m_agent.speed = m_stats.ChaseSpeed;
+	}
+
+	public void SetMovementSpeed()
+	{
+		m_agent.speed = m_stats.MovementSpeed;
 	}
 }

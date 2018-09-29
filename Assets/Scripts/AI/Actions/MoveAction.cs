@@ -21,12 +21,11 @@ public class MoveAction : Action
 	{
 		if (!controller.Owner.Agent.IsMoving())
 		{
-			var patrolRadius = 5.0f;
-			var randomDirection = Random.insideUnitSphere * patrolRadius;
+			var randomDirection = Random.insideUnitSphere * controller.Owner.PatrolRadius;
 			randomDirection += controller.Owner.Agent.transform.position;
 			NavMeshHit hit;
 			var finalPosition = Vector3.zero;
-			if (NavMesh.SamplePosition(randomDirection, out hit, patrolRadius, 1))
+			if (NavMesh.SamplePosition(randomDirection, out hit, controller.Owner.PatrolRadius, 1))
 			{
 				finalPosition = hit.position;
 			}

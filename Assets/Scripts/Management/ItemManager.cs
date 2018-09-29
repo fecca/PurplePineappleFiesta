@@ -4,7 +4,7 @@ public class ItemManager : MonoBehaviour
 {
 	public void OnEnemyDied(Enemy enemy)
 	{
-		var lootTable = enemy.GetLootTable();
+		var lootTable = enemy.LootTable;
 		foreach (var lootItem in lootTable.Items)
 		{
 			var position = enemy.transform.position;

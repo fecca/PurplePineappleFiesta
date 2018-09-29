@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03af79001f5398348bc305f501d63752, type: 3}
-  m_Name: LootTable
+  m_Script: {fileID: 11500000, guid: 0245b8358b2e5374d8932c286bac6fec, type: 3}
+  m_Name: SimpleEnemy
   m_EditorClassIdentifier: 
-  Items:
-  - {fileID: 11400000, guid: 7e9e6ba04509cb14abaf7941e69b36fa, type: 2}
+  MovementSpeed: 2
+  ChaseSpeed: 1
+  PatrolRadius: 5
+  BaseHealth: 100
+  LootTable: {fileID: 11400000, guid: 62f0cfa90dcc2d24fa0d5ef5f1040182, type: 2}
