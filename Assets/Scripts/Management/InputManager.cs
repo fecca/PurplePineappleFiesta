@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
 	[SerializeField]
 	private FloatReference m_updateInterval;
 	[SerializeField]
+	private FloatReference m_tapWindow;
+	[SerializeField]
 	private KeyBinding[] m_keyBindings;
 
 	private float m_mousePressTimer;
@@ -84,7 +86,7 @@ public class InputManager : MonoBehaviour
 
 		if (Input.GetMouseButtonUp(0))
 		{
-			if (m_mousePressTimer <= 0.1f)
+			if (IsTap())
 			{
 				RaycastHit hit;
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -118,6 +120,11 @@ public class InputManager : MonoBehaviour
 				EventManager.TriggerEvent(WorldEventType.ShootInDirection, hit.point);
 			}
 		}
+	}
+
+	private bool IsTap()
+	{
+		return m_mousePressTimer <= m_tapWindow.Value;
 	}
 
 	public void OnMouseInputLocked(bool value)

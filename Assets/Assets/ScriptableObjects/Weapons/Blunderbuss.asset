@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullets: 5
   SpreadRadius: 0.25
-  Distance: 10
+  Distance: 20
   Cooldown: 0.5
   Damage: 1000
   FollowSpeed: 10

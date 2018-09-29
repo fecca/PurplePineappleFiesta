@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class HitBox : MonoBehaviour
+public class ClickBox : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject m_listener;
@@ -22,13 +22,13 @@ public class HitBox : MonoBehaviour
 
 	public void OnHit(float damage)
 	{
-		IHitListener listener = m_listener.GetComponent<IHitListener>();
+		IClickListener listener = m_listener.GetComponent<IClickListener>();
 		if (listener == null)
 		{
-			Debug.LogWarning($"No interface IHitListener on GameObject {m_listener.name}");
+			Debug.LogWarning($"No interface IClickListener on GameObject {m_listener.name}");
 			return;
 		}
 
-		listener.OnHit(damage);
+		listener.OnClick();
 	}
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 57976033}
   - component: {fileID: 57976032}
   - component: {fileID: 57976034}
+  - component: {fileID: 1660527234948043672}
   m_Layer: 12
   m_Name: Detection
   m_TagString: Untagged
@@ -44,7 +45,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &57976032
 MonoBehaviour:
@@ -61,9 +62,10 @@ MonoBehaviour:
   m_layerMask:
     serializedVersion: 2
     m_Bits: 2048
-  m_radius: {fileID: 11400000, guid: 2de1b49760affd34b83989a3f1dd73f5, type: 2}
-  m_drawGizmos: 1
-  m_gizmoColor: {r: 1, g: 0.87151104, b: 0, a: 0.5019608}
+  m_radius:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 2de1b49760affd34b83989a3f1dd73f5, type: 2}
 --- !u!54 &57976034
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80,6 +82,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1660527234948043672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57976030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0c6d2eb093f01439661ab2503ffe48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_drawGizmos: 1
+  m_gizmoColor: {r: 0, g: 0, b: 1, a: 1}
+  m_collider: {fileID: 57976033}
 --- !u!1 &380064334325218109
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +273,7 @@ GameObject:
   - component: {fileID: 2040170294643531802}
   - component: {fileID: 444117781652091877}
   - component: {fileID: 1756195469295442447}
+  - component: {fileID: 2955816277071494047}
   m_Layer: 10
   m_Name: HitBox
   m_TagString: Untagged
@@ -288,7 +306,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1756195469295442447
 MonoBehaviour:
@@ -303,6 +321,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_listener: {fileID: 380064334325218109}
-  m_radius: {fileID: 11400000, guid: 62fe91e4b4137c24197c3c2dc3a1c2ab, type: 2}
+  m_radius:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 62fe91e4b4137c24197c3c2dc3a1c2ab, type: 2}
+--- !u!114 &2955816277071494047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7252402733450877682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0c6d2eb093f01439661ab2503ffe48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_drawGizmos: 1
-  m_gizmoColor: {r: 0, g: 1, b: 0.07467604, a: 0.2509804}
+  m_gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  m_collider: {fileID: 444117781652091877}

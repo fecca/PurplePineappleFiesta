@@ -6,26 +6,11 @@ public class Detector : MonoBehaviour
 	[SerializeField]
 	private LayerMask m_layerMask;
 	[SerializeField]
-	private FloatVariable m_radius;
-
-	[Header("Gizmos")]
-	[SerializeField]
-	private bool m_drawGizmos;
-	[SerializeField]
-	private Color m_gizmoColor;
+	private FloatReference m_radius;
 
 	public GameObject Detection { get; private set; }
 
 	private SphereCollider m_collider;
-
-	private void OnDrawGizmos()
-	{
-		if (m_drawGizmos)
-		{
-			Gizmos.color = m_gizmoColor;
-			Gizmos.DrawWireSphere(transform.position, m_radius.Value);
-		}
-	}
 
 	private void Awake()
 	{
