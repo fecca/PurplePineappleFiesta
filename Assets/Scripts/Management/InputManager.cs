@@ -19,7 +19,14 @@ public class InputManager : MonoBehaviour
 			return;
 		}
 
+		HandleKeyboardInput();
 		HandleMouseInput();
+	}
+
+	private bool m_dash;
+	private void HandleKeyboardInput()
+	{
+		m_dash = Input.GetKey(KeyCode.Space);
 	}
 
 	private void HandleMouseInput()

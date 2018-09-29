@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
 				}
 			}
 		}
+
+		m_dash = Input.GetKey(KeyCode.Space);
 	}
 
 	private void PickUpItem(Item item)
@@ -63,8 +65,10 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	private bool m_dash;
 	private void MoveTo(Vector3 point)
 	{
+		m_agent.speed = m_dash ? 100f : 5.0f;
 		m_agent.isStopped = false;
 		m_agent.SetDestination(point);
 		m_moving = true;
