@@ -24,9 +24,9 @@ public class ChaseAction : Action
 
 	private void Chase(StateController controller)
 	{
-		if (controller.Owner.Detection() != null)
+		if (controller.Owner.DetectedObject() != null)
 		{
-			controller.Owner.Agent.SetDestination(controller.Owner.Detection().transform.position);
+			controller.Owner.Agent.SetDestination(controller.Owner.DetectedObject().transform.position);
 		}
 	}
 }

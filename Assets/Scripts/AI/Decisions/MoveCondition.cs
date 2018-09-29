@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "AI/Decisions/Move")]
-public class MoveDecision : Decision
+[CreateAssetMenu(menuName = "AI/Conditions/Move")]
+public class MoveCondition : Condition
 {
-	public override bool Decide(StateController controller)
+	public override bool CheckCondition(StateController controller)
 	{
 		var canMove = !controller.Owner.Agent.IsMoving();
 		var timerHasElapsed = controller.CheckTimer(2.0f);

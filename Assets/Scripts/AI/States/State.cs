@@ -41,8 +41,8 @@ public class State : ScriptableObject
 
 		foreach (var transition in m_transitions)
 		{
-			var decision = transition.Decide(controller);
-			if (decision && trueState == null)
+			var conditionMet = transition.CheckCondition(controller);
+			if (conditionMet && trueState == null)
 			{
 				trueState = transition.TrueState;
 			}

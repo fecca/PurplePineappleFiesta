@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour, IHitListener
 		Health -= damage;
 	}
 
-	public GameObject Detection()
+	public GameObject DetectedObject()
 	{
 		return m_playerDetection.Detection;
 	}

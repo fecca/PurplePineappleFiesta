@@ -41,10 +41,10 @@ public class Weapon : MonoBehaviour
 	{
 		m_shooting = true;
 
-		for (var i = 0; i < m_stats.Frames; i++)
+		for (var i = 0; i < m_stats.ShootAnimationFrames; i++)
 		{
-			transform.position = Vector3.Lerp(transform.position, m_parent.position, (float)i / m_stats.Frames);
-			transform.rotation = Quaternion.Lerp(transform.rotation, m_parent.rotation, (float)i / m_stats.Frames);
+			transform.position = Vector3.Lerp(transform.position, m_parent.position, (float)i / m_stats.ShootAnimationFrames);
+			transform.rotation = Quaternion.Lerp(transform.rotation, m_parent.rotation, (float)i / m_stats.ShootAnimationFrames);
 
 			yield return new WaitForEndOfFrame();
 		}

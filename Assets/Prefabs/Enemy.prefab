@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Bits: 2048
   m_radius: {fileID: 11400000, guid: 2de1b49760affd34b83989a3f1dd73f5, type: 2}
   m_drawGizmos: 1
-  m_gizmoColor: {r: 0.7549553, g: 0, b: 1, a: 0.2509804}
+  m_gizmoColor: {r: 1, g: 0.87151104, b: 0, a: 0.5019608}
 --- !u!54 &57976034
 Rigidbody:
   m_ObjectHideFlags: 0

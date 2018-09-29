@@ -5,7 +5,7 @@ using UnityEngine;
 public class Transition
 {
 	[SerializeField]
-	private Decision m_decision;
+	private Condition m_conditions;
 	[SerializeField]
 	private State m_trueState;
 	[SerializeField]
@@ -14,8 +14,8 @@ public class Transition
 	public State TrueState { get { return m_trueState; } }
 	public State FalseState { get { return m_falseState; } }
 
-	public bool Decide(StateController controller)
+	public bool CheckCondition(StateController controller)
 	{
-		return m_decision.Decide(controller);
+		return m_conditions.CheckCondition(controller);
 	}
 }
