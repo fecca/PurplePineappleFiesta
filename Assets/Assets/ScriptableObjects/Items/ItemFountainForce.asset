@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fbcb22c51fe30243b96872cc79a8a8f, type: 3}
-  m_Name: SomeItem
+  m_Script: {fileID: 11500000, guid: 22a9509b4b581f94dad37629c93c7e68, type: 3}
+  m_Name: ItemFountainForce
   m_EditorClassIdentifier: 
-  Name: SomeItem
-  Prefab: {fileID: 3439619442019257382, guid: 181e3195b7f07ea419df5f3827f1cdda, type: 3}
+  Value: 75
