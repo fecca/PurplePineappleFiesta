@@ -13,7 +13,6 @@ public class Item : MonoBehaviour, IClickListener
 
 	public void OnClick()
 	{
-		Debug.Log("Clicked item");
 		EventManager.TriggerEvent(ItemEventType.Clicked, this);
 	}
 }

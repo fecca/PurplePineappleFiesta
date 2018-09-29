@@ -134,9 +134,9 @@ public class EventManager : MonoBehaviour
 
 	#endregion
 
-	#region WORLD EVENTS
+	#region Enemy EVENTS
 
-	[Header("World")]
+	[Header("Enemy")]
 	[SerializeField]
 	private EnemyEvent EnemyDied;
 
