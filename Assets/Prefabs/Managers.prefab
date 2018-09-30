@@ -229,7 +229,9 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: eef5e29be19853641804f84fb35b08e7, type: 2}
-  m_keyBindings: []
+  m_keyBindings:
+  - KeyCode: 105
+    Event: {fileID: 11400000, guid: 4d9f9ca131216ba409dc27c57906154f, type: 2}
 --- !u!114 &1818133680203017477
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,10 @@ public class CanvasManager : MonoBehaviour
 	private ItemRuntimeSet m_items;
 	[SerializeField]
 	private Text m_itemText;
+	[SerializeField]
+	private GameObject m_inventory;
+	[SerializeField]
+	private GameObject m_inventoryItem;
 
 	private Coroutine m_coroutine;
 	private Dictionary<Item, Text> m_itemTexts = new Dictionary<Item, Text>();
@@ -24,8 +28,6 @@ public class CanvasManager : MonoBehaviour
 
 	private void Update()
 	{
-		m_inventoryText.text = string.Format("{0}/{1}", m_items.Items.Count, m_items.Slots);
-
 		foreach (var itemText in m_itemTexts)
 		{
 			var screenPosition = Camera.main.WorldToScreenPoint(itemText.Key.transform.position + Vector3.up);
@@ -53,6 +55,11 @@ public class CanvasManager : MonoBehaviour
 		}
 	}
 
+	private void ToggleInventory()
+	{
+		m_inventory.SetActive(!m_inventory.activeInHierarchy);
+	}
+
 	public void OnScreenMessage(string message)
 	{
 		if (m_coroutine != null) { StopCoroutine(m_coroutine); }
@@ -76,5 +83,14 @@ public class CanvasManager : MonoBehaviour
 			Destroy(m_itemTexts[item].gameObject);
 			m_itemTexts.Remove(item);
 		}
+
+		m_inventoryText.text = string.Format("{0}/{1}", m_items.Items.Count, m_items.Slots);
+
+		Instantiate(m_inventoryItem, m_inventory.transform);
+	}
+
+	public void OnInventoryBindingPressed()
+	{
+		ToggleInventory();
 	}
 }
