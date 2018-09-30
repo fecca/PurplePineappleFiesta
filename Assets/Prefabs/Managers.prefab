@@ -232,6 +232,8 @@ MonoBehaviour:
   m_keyBindings:
   - KeyCode: 105
     Event: {fileID: 11400000, guid: 4d9f9ca131216ba409dc27c57906154f, type: 2}
+  - KeyCode: 99
+    Event: {fileID: 11400000, guid: 65bf500e74344704f91cba57ef27e831, type: 2}
 --- !u!114 &1818133680203017477
 MonoBehaviour:
   m_ObjectHideFlags: 0

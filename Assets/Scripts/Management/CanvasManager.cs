@@ -16,6 +16,8 @@ public class CanvasManager : MonoBehaviour
 	[SerializeField]
 	private GameObject m_inventory;
 	[SerializeField]
+	private GameObject m_characterSheet;
+	[SerializeField]
 	private GameObject m_inventoryItem;
 
 	private Coroutine m_coroutine;
@@ -60,6 +62,11 @@ public class CanvasManager : MonoBehaviour
 		m_inventory.SetActive(!m_inventory.activeInHierarchy);
 	}
 
+	private void ToggleCharacterSheet()
+	{
+		m_characterSheet.SetActive(!m_characterSheet.activeInHierarchy);
+	}
+
 	public void OnScreenMessage(string message)
 	{
 		if (m_coroutine != null) { StopCoroutine(m_coroutine); }
@@ -92,5 +99,10 @@ public class CanvasManager : MonoBehaviour
 	public void OnInventoryBindingPressed()
 	{
 		ToggleInventory();
+	}
+
+	public void OnCharacterSheetBindingPressed()
+	{
+		ToggleCharacterSheet();
 	}
 }
